@@ -65,9 +65,9 @@ def warning(text, verbosity):
     print(f"WARNING: {text}")
     
 # If errors, run this file to run unit tests for the system with debug=True
-debug=False
+debugging=True
 
-if debug:
+if debugging:
     verbose = 8
 
     debug('test one', [i for i in range(10)], verbose, 1)
