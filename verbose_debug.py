@@ -37,17 +37,13 @@ def debug(text, args, verbosity, threshold):
             verbosity : current verbosity within object being debugged
             threshold : the verbosity that triggers this delay
     '''
-
-
-    # generate prefix (encodes how tabbing is done, this way by tabbing in every 2 levels) 
-    prefix = '\t ' * (threshold//2)
     
     # check if we should trigger
     if verbosity < threshold:
         return
 
-    # figure out how much we should tab in
-    
+    # figure out how much we should tab in by generating prefix
+    prefix = '\t' * (threshold//2)  
 
     # display label and arguments using list comprehension
     print(f"{prefix} {text} {[str(arg) for arg in args]}")
@@ -68,16 +64,17 @@ def warning(text, verbosity):
     # display label
     print(f"WARNING: {text}")
     
-# If errors, run this file to run unit tests for the system
-'''
-verbose = 8
+# If errors, run this file to run unit tests for the system with debug=True
+debug=False
 
-debug('test one', [i for i in range(10)], verbose, 1)
-debug('test two', [i for i in range(5)], verbose, 2)
-debug('test three', [i for i in range(10)], verbose, 3)
-debug('test four', [i for i in range(5)], verbose, 4)
-debug('test five', [i for i in range(10)], verbose, 5)
-debug('test six', [i for i in range(5)], verbose, 6)
-debug('test seven', [i for i in range(5)], verbose, 7)
-warning('warning', verbose)
-'''
+if debug:
+    verbose = 8
+
+    debug('test one', [i for i in range(10)], verbose, 1)
+    debug('test two', [i for i in range(5)], verbose, 2)
+    debug('test three', [i for i in range(10)], verbose, 3)
+    debug('test four', [i for i in range(5)], verbose, 4)
+    debug('test five', [i for i in range(10)], verbose, 5)
+    debug('test six', [i for i in range(5)], verbose, 6)
+    debug('test seven', [i for i in range(5)], verbose, 7)
+    warning('warning', verbose)
